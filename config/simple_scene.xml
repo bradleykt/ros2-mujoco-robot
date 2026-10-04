@@ -1,0 +1,9 @@
+<mujoco model="simple_scene">
+  <worldbody>
+    <geom name="floor" type="plane" size="5 5 0.1"/>
+    <body name="box" pos="0 0 1">
+      <freejoint/>
+      <geom name="box_geom" type="box" size="0.2 0.2 0.2"/>
+    </body>
+  </worldbody>
+</mujoco>
