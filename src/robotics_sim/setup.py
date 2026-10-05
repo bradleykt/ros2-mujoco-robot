@@ -25,6 +25,7 @@ setup(
     entry_points={
         'console_scripts': [
             'status_node = robotics_sim.status_node:main',
+            'sim_command = robotics_sim.sim_command:main',
         ],
     },
 )

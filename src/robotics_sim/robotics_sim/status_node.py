@@ -1,6 +1,6 @@
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import String
+from std_msgs.msg import Float64, String
 
 
 class StatusNode(Node):
@@ -10,6 +10,12 @@ class StatusNode(Node):
         self.publisher = self.create_publisher(
             String,
             'robot_status',
+            10
+        )
+
+        self.command_publisher = self.create_publisher(
+            Float64,
+            'robot_command',
             10
         )
 
@@ -25,7 +31,15 @@ class StatusNode(Node):
         msg.data = 'Robot simulation running'
 
         self.publisher.publish(msg)
-        self.get_logger().info(f'Published: {msg.data}')
+
+        command = Float64()
+        command.data = 1000.0
+
+        self.command_publisher.publish(command)
+
+        self.get_logger().info(
+            f'Published status: {msg.data}, command: {command.data}'
+        )
 
 
 def main(args=None):
